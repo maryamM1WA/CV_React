@@ -17,9 +17,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="fr">
+      <body>
       <ChakraProvider resetCSS>
        {children}
       </ChakraProvider>
+      </body>
     </html>
   )
 }
