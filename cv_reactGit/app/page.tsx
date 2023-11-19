@@ -1,4 +1,7 @@
 'use client'
+// *******************************************************************************************
+//importation
+// *******************************************************************************************
 import { Center, Image } from '@chakra-ui/react'
 import { IconButton } from '@chakra-ui/react'
 import { PhoneIcon, AddIcon, WarningIcon } from '@chakra-ui/icons'
@@ -8,9 +11,24 @@ import { Box, Heading, Text} from '@chakra-ui/react';
 import { space } from 'postcss/lib/list'
 import { ChakraProvider, Container, VStack, Icon, Link} from '@chakra-ui/react';
 import { FaPhone, FaEnvelope, FaLinkedin } from 'react-icons/fa';
+import {
+  Step,
+  StepDescription,
+  StepIcon,
+  StepIndicator,
+  StepNumber,
+  StepSeparator,
+  StepStatus,
+  StepTitle,
+  Stepper,
+  useSteps,
+} from '@chakra-ui/react'
+//************************************************************************************************ */
+
+//creation des fonctions
+//***********************************************************************************//
 
 export default function Home() {
-
 /*pour creer un bouton qui télécharge le cv*/
  
     const handleDownload = () => {
@@ -27,6 +45,24 @@ export default function Home() {
       document.body.removeChild(link);
     };
   
+
+
+// contenu experience
+//Definition des experiences
+
+const steps = [
+  { title: 'Master 2 Mathémathique et Informatique',date:'2024', description: 'Parcours web Analyste - Université de Lille' },
+  { title: 'Master 1 Mathémathique et Informatique',date:'2023', description: 'Parcours Web Analyste - Université de Lille' },
+  { title: 'Licence Informatique',date:'2023', description: 'Université Jean Monnet Saint-Etienne' },
+  { title: 'PSC1',date:'2023', description: 'Initiation aux premiers secours' },
+]
+
+const { activeStep } = useSteps({
+  index: 1,
+  count: steps.length,
+})
+
+// Affichage sur la page
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
@@ -47,7 +83,7 @@ export default function Home() {
   <TabList id="menu">
     <Tab style={{ fontSize: '25px' }}>Acceuil</Tab>
     <Tab style={{ fontSize: '25px' }}>Contacts</Tab>
-    <Tab style={{ fontSize: '25px' }}> Experiences</Tab>
+    <Tab style={{ fontSize: '25px' }}> Formations</Tab>
     <Tab style={{ fontSize: '25px' }}> Compétences</Tab>
     <Tab style={{ fontSize: '25px' }}>Interêts</Tab>
   </TabList>
@@ -58,11 +94,11 @@ export default function Home() {
     <TabPanel className="contenu">
 
      <div id="paragrapheAcceuil">
-
-    <Box p={8} maxW="1200px" mx="auto"  justifyContent="space-between" >
-      <Heading as="h1" mb={4} textAlign={'center'}>
+     <Heading  as="h1" mb={4} textAlign={'center'} color='lightcoral'>
         Étudiante en Master 2 Web Analyste
       </Heading>
+    <Box id="bio" p={8} maxW="1200px" mx="auto"  justifyContent="space-between" >
+      
 
       <Text mb={4} justifyContent="space-between">
         Je suis actuellement à la recherche d un stage de 6 mois à partir de février 2023.
@@ -114,17 +150,43 @@ export default function Home() {
         </Box>
       </Container>
     </ChakraProvider>
-  
+  </TabPanel>
 
 
-    </TabPanel>
-
-
-
+{/* contenu experience */}
 
     <TabPanel className="contenu">
-      <p>two!</p>
+
+
+
+
+
+    <Stepper index={activeStep} orientation='vertical' height='700px' gap=''>
+      {steps.map((step, index) => (
+        <Step key={index}>
+          
+          <StepIndicator>
+            <StepStatus
+              complete={<StepNumber/>}
+              incomplete={<StepNumber />}
+              active={<StepNumber />}
+            />
+          </StepIndicator>
+
+          <Box flexShrink='0'>
+            <StepTitle>{step.title}</StepTitle>
+            <StepDescription>{step.date}</StepDescription>
+            <StepDescription>{step.description}</StepDescription>
+          </Box>
+
+          <StepSeparator />
+        </Step>
+      ))}
+    </Stepper>
+
     </TabPanel>
+
+{/* contenu compétences */}
 
     <TabPanel className="contenu">
       <p>two!</p>
