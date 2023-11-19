@@ -90,12 +90,15 @@ export default function Home() {
     {/* page de contact */}
 
     <TabPanel className="contenu">
-    <ChakraProvider>
-      <Container maxW="md" centerContent>
+
+      
+    <ChakraProvider >
+      <Container maxW="md" centerContent fontSize='30px'>
+      <Box id="contact"  borderRadius="lg" p={4}>
         <VStack spacing={4} align="stretch">
           <Link href="tel:+33 768273332">
-            <Icon as={FaPhone} boxSize={6} />
-            <Text>Téléphone: 07 68 27 33 32</Text>
+            <Icon as={FaPhone} boxSize={6} /> 
+            <Text>07 68 27 33 32</Text>
           </Link>
 
           <Link href="eid.maryam@hotmail.com">
@@ -103,13 +106,17 @@ export default function Home() {
             <Text>eid.maryam@hotmail.com</Text>
           </Link>
 
-          <Link href="www.linkedin.com/in/maryameid" isExternal>
+          <Link href="https://www.linkedin.com/in/maryameid/" isExternal>
             <Icon as={FaLinkedin} boxSize={6} />
-            <Text>LinkedIn: EID Maryam</Text>
+            <Text>https://www.linkedin.com/in/maryameid/</Text>
           </Link>
         </VStack>
+        </Box>
       </Container>
     </ChakraProvider>
+  
+
+
     </TabPanel>
 
 

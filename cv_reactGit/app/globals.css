@@ -69,3 +69,14 @@ position :absolute;
   margin-left:10%;
   justify-content:space-around;
 }
+
+
+#contact{
+  margin-top:20%;
+  margin-left:10%;
+  border-color:lightcoral;
+  border-width: 20px;
+  background-color: white;
+  color:lightcoral;
+  width: 230%;
+}
