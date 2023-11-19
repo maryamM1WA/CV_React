@@ -53,3 +53,19 @@ padding-top:2%;
   position: relative;
   background-color: blanchedalmond;
 }
+
+/**css pour la page d'acceuil**/
+
+#telechargement{
+margin-top: 40%;
+margin-left: 40%;
+width:40%;
+position: absolute;
+}
+
+#paragrapheAcceuil{
+position :absolute;
+  width:70%;
+  margin-left:10%;
+  justify-content:space-around;
+}
