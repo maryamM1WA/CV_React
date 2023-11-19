@@ -40,7 +40,20 @@ export default function Home() {
       document.body.removeChild(link);
     };
   
-
+    const handleDownload2 = () => {
+      // Crée un lien <a> pour déclencher le téléchargement
+      const link = document.createElement('a');
+      link.href = 'image/Portfolio.pdf'; 
+      link.download = 'portfolio_EID.pdf';
+      
+      // Ajoute le lien au DOM et le déclenche
+      document.body.appendChild(link);
+      link.click();
+  
+      // Nettoie le lien du DOM
+      document.body.removeChild(link);
+    };
+  
 
 // contenu experience
 //Definition des composante experiences
@@ -57,6 +70,13 @@ const { activeStep } = useSteps({
   count: steps.length,
 })
 
+
+
+const steps2 = [
+  { title: 'Stage Devloppement web',date:'2023', description: '1001 clicks ' },
+  { title: 'Service Civique',date:'2022', description: 'Mission local Saint-Etienne' },
+  { title: 'Soirée jeu vidéo Melies',date:'2020', description: 'Melies Saint-Etienne' },
+]
 
 
 
@@ -94,6 +114,7 @@ const { activeStep } = useSteps({
     <Tab style={{ fontSize: '25px' }}>Contacts</Tab>
     <Tab style={{ fontSize: '25px' }}> Formations</Tab>
     <Tab style={{ fontSize: '25px' }}> Compétences</Tab>
+    <Tab style={{ fontSize: '25px' }}> Experiences</Tab>
     <Tab style={{ fontSize: '25px' }}>Interêts</Tab>
   </TabList>
 
@@ -170,8 +191,8 @@ const { activeStep } = useSteps({
 
 
 
-    <Stepper index={activeStep} orientation='vertical' height='700px' gap=''>
-      {steps.map((step, index) => (
+    <Stepper index={activeStep} orientation='vertical' height='700px' colorScheme='red'gap=''>
+      {steps2.map((step, index) => (
         <Step key={index}>
           
           <StepIndicator>
@@ -205,10 +226,35 @@ const { activeStep } = useSteps({
             </Box>
     
     </TabPanel>
+{/* contenu experiences */}
+    <TabPanel className="contenu">
+
+    <Stepper index={activeStep} orientation='vertical' height='700px' colorScheme='red' gap=''>
+      {steps2.map((step, index) => (
+        <Step key={index}>
+          
+          <StepIndicator>
+            <StepStatus
+              complete={<StepNumber/>}
+              incomplete={<StepNumber />}
+              active={<StepNumber />}
+            />
+          </StepIndicator>
+
+          <Box flexShrink='0'>
+            <StepTitle>{step.title}</StepTitle>
+            <StepDescription>{step.date}</StepDescription>
+            <StepDescription>{step.description}</StepDescription>
+          </Box>
+
+          <StepSeparator />
+        </Step>
+      ))}
+    </Stepper>
 
 
 
-
+    </TabPanel>
 
 
 
@@ -218,8 +264,29 @@ const { activeStep } = useSteps({
 
 
   <TabPanel className="contenu">
-      <p>two!</p>
+  <Tabs variant='unstyled'>
+  <TabList id="loisir">
+    <Tab _selected={{ color: 'white', bg: 'lightcoral' }} style={{ fontSize: '25px' }}>Portfolio</Tab>
+  </TabList>
+  <TabPanels>
+  
+
+    <TabPanel >
+      <p id='portfolio'>Pour plus de contenus :</p>
+      <div id="telechargement2" onClick={handleDownload2}>
+      <Button colorScheme='blue' width={'250px'}>Télécharger mon Portfolio.pdf</Button>
+    </div>  
     </TabPanel>
+  </TabPanels>
+</Tabs>
+    </TabPanel>
+
+
+
+
+
+
+
 
   </TabPanels>
 </Tabs>

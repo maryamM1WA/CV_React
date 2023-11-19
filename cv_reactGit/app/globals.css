@@ -97,3 +97,18 @@ position :absolute;
   border-width: 20px;
   background-color: white;
 }
+
+/*css du contenu de interets*/
+
+#loisir{
+  color: #ff7e5f;
+}
+
+#portfolio{
+  font-size:30px;
+}
+
+#telechargement2{
+  margin-top:10%;
+  margin-left: 40%;
+}
