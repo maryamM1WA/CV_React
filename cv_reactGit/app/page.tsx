@@ -2,17 +2,8 @@
 // *******************************************************************************************
 //importation
 // *******************************************************************************************
-import { Center, Image } from '@chakra-ui/react'
-import { IconButton } from '@chakra-ui/react'
-import { PhoneIcon, AddIcon, WarningIcon } from '@chakra-ui/icons'
-import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react'
-import { Button, ButtonGroup } from '@chakra-ui/react'
-import { Box, Heading, Text} from '@chakra-ui/react';
-import { space } from 'postcss/lib/list'
-import { ChakraProvider, Container, VStack, Icon, Link} from '@chakra-ui/react';
-import { FaPhone, FaEnvelope, FaLinkedin } from 'react-icons/fa';
-import {
-  Step,
+import { Center, 
+  Image ,ChakraProvider, Container, VStack, Icon, Link, Step,
   StepDescription,
   StepIcon,
   StepIndicator,
@@ -21,8 +12,12 @@ import {
   StepStatus,
   StepTitle,
   Stepper,
-  useSteps,
-} from '@chakra-ui/react'
+  useSteps, IconButton , Tabs, TabList, TabPanels, Tab, TabPanel , Button, ButtonGroup , Box, Heading, Text} from '@chakra-ui/react';
+
+import { FaPhone, FaEnvelope, FaLinkedin } from 'react-icons/fa';
+import { PhoneIcon, AddIcon, WarningIcon } from '@chakra-ui/icons'
+import { space } from 'postcss/lib/list'
+import React, { useState } from 'react';
 //************************************************************************************************ */
 
 //creation des fonctions
@@ -48,7 +43,7 @@ export default function Home() {
 
 
 // contenu experience
-//Definition des experiences
+//Definition des composante experiences
 
 const steps = [
   { title: 'Master 2 Mathémathique et Informatique',date:'2024', description: 'Parcours web Analyste - Université de Lille' },
@@ -61,6 +56,20 @@ const { activeStep } = useSteps({
   index: 1,
   count: steps.length,
 })
+
+
+
+
+
+  const images = ['logo/css.jpg','logo/git.png','logo/html.png','logo/js.png','logo/nodejs.jpg','logo/pbi.jpg','logo/php.png','logo/python.png','logo/sf.jpg','logo/sql.png'];
+
+
+
+
+
+
+
+
 
 // Affichage sur la page
 
@@ -189,8 +198,23 @@ const { activeStep } = useSteps({
 {/* contenu compétences */}
 
     <TabPanel className="contenu">
-      <p>two!</p>
+    <Box id="competence" display="flex" flexDirection="row" flexWrap="wrap" justifyContent="center">
+              {images.map((imageUrl, index) => (
+                <Image key={index} src={imageUrl} alt={`Slide ${index + 1}`} maxH="130px" mx="4" my="2" marginTop='70px'/>
+              ))}
+            </Box>
+    
     </TabPanel>
+
+
+
+
+
+
+
+
+
+
 
 
   <TabPanel className="contenu">
@@ -203,5 +227,6 @@ const { activeStep } = useSteps({
 
 
     </main>
-  )
-}
+
+)
+  }

@@ -91,3 +91,9 @@ position :absolute;
   color:lightcoral;
   width: 230%;
 }
+
+#competence{
+  border-color:lightcoral;
+  border-width: 20px;
+  background-color: white;
+}
